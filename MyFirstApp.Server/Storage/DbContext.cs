@@ -1,6 +1,5 @@
+using entity;
 using Microsoft.EntityFrameworkCore;
-using MyFirstApp.Server.entity;
-
 namespace MyFirstApp.Server.Storage
 {
 public class RepositoryDbContext : DbContext

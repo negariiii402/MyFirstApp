@@ -1,5 +1,7 @@
 
 
+using System.ComponentModel.DataAnnotations;
+
 namespace entity
 {
     public class Factor{
@@ -11,6 +13,7 @@ namespace entity
     }
     public class FactorItem{
        public int FactorId{get; set;}
+       public int CustomerId {get; set;}
        public int BookId {get;set;}
     }
 }
