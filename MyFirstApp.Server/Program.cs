@@ -9,6 +9,7 @@ builder.Services.AddOpenApi();
 var Builder= builder.Services.AddDbContext<RepositoryDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"));
+    
 });
 
 var app = builder.Build();

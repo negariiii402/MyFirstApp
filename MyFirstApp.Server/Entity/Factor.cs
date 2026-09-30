@@ -1,19 +1,29 @@
 
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.ConstrainedExecution;
 
 namespace entity
 {
+    [Table("Factor")]
+   
     public class Factor{
         public int Id {get;set;}
-        public int CustomerId {get;set;} 
-        public int ChashierId {get;set;}
-        public Chashier Cashier { get; set; }= new Chashier();
-        public Customer Customer { get; set; }= new Customer();
-    }
+        public int CashierId { get; set; }
+        public int CustomerId { get; set; }
+        public Chashier Cashier { get; set; }
+        public Customer Customer { get; set; }
+        public List<FactorItem> FactorItems { get; set; }
+  }
+
+  
     public class FactorItem{
+        public int Id { get; set; }
        public int FactorId{get; set;}
-       public int CustomerId {get; set;}
-       public int BookId {get;set;}
+       public int BookId { get; set; }
+       public Factor Factor { get; set; }
+       public Book Book {get;set;}
     }
+    
 }

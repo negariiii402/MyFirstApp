@@ -1,18 +1,21 @@
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace entity
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using entity;
+namespace MyFirstApp.Server.Dtos
 {
-    [Table("Books")]
-
-       public class Book
+    public class BooksDto
     {
-       public int Id {get; set;}
        public string Name {get; set;}= string.Empty;
        public string Author { get; set; }= string.Empty;
-       [Column(TypeName = "decimal(18,2)")]
        public decimal Price { get; set; }
        public string Publisher { get; set; }= string.Empty;
        public List<FactorItem> FactorItems { get; set; }
+
+        internal object GetAllBooks()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
