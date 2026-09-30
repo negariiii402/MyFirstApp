@@ -6,34 +6,57 @@ using entity;
 using MyFirstApp.Server.Dtos;
 using MyFirstApp.Server.Mapping;
 using Microsoft.AspNetCore.Mvc;
+using MyFirstApp.Server.Storage;
 
 namespace MyFirstApp.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
 
-    public class BookStore: Controller
+    public class BookController: Controller
     {
-        private readonly BooksDto _booksDto;
-        public BookStore (BooksDto booksDto)
+        private readonly RepositoryDbContext _dbContext;
+        public BookController(RepositoryDbContext dbContext)
         {
-             _booksDto = booksDto;
-
+            _dbContext = dbContext;
         }
-       
-        [HttpGet]
-        public IActionResult GetAllBooks(BooksDto booksDto)
-        {
-            var books= _booksDto.ToList();
-            var book= _booksDto.GetAllBooks();
 
-            return Ok(books);
+        [HttpGet]
+        public IActionResult GetAllBooks()
+        {
+            var books = _dbContext.Books.ToList();
+
+            List<BooksDto> booksDtos = new();
+
+            foreach(var book in books)
+            {
+            var bookDto = new BooksDto()
+                {
+                Name =   book.Name,
+                Author = book.Author,
+                Price = book.Price,
+                Publisher = book.Publisher
+                };
+                booksDtos.Add(bookDto);
+            }
+
+            return Ok(booksDtos);
         }
 
         [HttpGet("{Id}")]
         public IActionResult GetBookById(int Id)
         {
-            var Book= 
+            var book = _dbContext.Books.Find(Id);
+
+            var bookDto = new BooksDto()
+            {
+              Name =   book.Name,
+              Author = book.Author,
+              Price = book.Price,
+              Publisher = book.Publisher
+            };
+
+            return Ok(bookDto);
         }
 
         [HttpPost]
@@ -57,7 +80,4 @@ namespace MyFirstApp.Server.Controllers
         
     }
 
-    internal class _BooksDto
-    {
-    }
 }

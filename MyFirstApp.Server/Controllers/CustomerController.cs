@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MyFirstApp.Server.Storage;
 
 namespace MyFirstApp.Server.Controllers
 {
@@ -12,21 +13,14 @@ namespace MyFirstApp.Server.Controllers
     public class CustomerController : Controller
     {
         private readonly ILogger<CustomerController> _logger;
+        private readonly RepositoryDbContext _dbContext;
 
-        public CustomerController(ILogger<CustomerController> logger)
+        public CustomerController(ILogger<CustomerController> logger, RepositoryDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+        
     }
 }

@@ -9,11 +9,10 @@ namespace MyFirstApp.Server.Mapping
 {
     public static class BookMapper
     {
-        public static Book ToBookDto(this Book book)
+        public static BooksDto ToBookDto(this Book book)
         {
-            return new Book
+            return new BooksDto
             {
-            Id= book.Id, 
             Name= book.Name, 
             Author= book.Author,
             Price= book.Price, 

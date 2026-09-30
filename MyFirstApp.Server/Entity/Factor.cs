@@ -9,7 +9,9 @@ namespace entity
     [Table("Factor")]
    
     public class Factor{
+        //primary key
         public int Id {get;set;}
+        //foreign key
         public int CashierId { get; set; }
         public int CustomerId { get; set; }
         public Chashier Cashier { get; set; }

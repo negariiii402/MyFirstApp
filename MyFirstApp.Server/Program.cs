@@ -12,6 +12,8 @@ var Builder= builder.Services.AddDbContext<RepositoryDbContext>(option =>
     
 });
 
+builder.Services.AddScoped<RepositoryDbContext>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

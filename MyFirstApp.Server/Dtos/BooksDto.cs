@@ -11,7 +11,6 @@ namespace MyFirstApp.Server.Dtos
        public string Author { get; set; }= string.Empty;
        public decimal Price { get; set; }
        public string Publisher { get; set; }= string.Empty;
-       public List<FactorItem> FactorItems { get; set; }
 
         internal object GetAllBooks()
         {
