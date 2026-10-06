@@ -14,7 +14,7 @@ namespace entity
         //foreign key
         public int CashierId { get; set; }
         public int CustomerId { get; set; }
-        public Chashier Cashier { get; set; }
+        public Chachier Cachier { get; set; }
         public Customer Customer { get; set; }
         public List<FactorItem> FactorItems { get; set; }
   }
