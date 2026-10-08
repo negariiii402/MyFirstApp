@@ -24,7 +24,7 @@ namespace MyFirstApp.Server.Controllers
         [HttpGet]
         public IActionResult GetAllChachiers()
         {
-            var chachier = _dbContext.Chashiers.ToList();
+            var chachier = _dbContext.Chachiers.ToList();
 
             List<ChachierDto> chachierDtos = new();
             foreach (var Chachier in chachier)
@@ -41,7 +41,7 @@ namespace MyFirstApp.Server.Controllers
         [HttpGet("{Id}")]
         public IActionResult GetChachierById(int Id)
         {
-            var chachier = _dbContext.Chashiers.Find(Id);
+            var chachier = _dbContext.Chachiers.Find(Id);
             
             var chachierDto = new ChachierDto()
             {
@@ -64,7 +64,7 @@ namespace MyFirstApp.Server.Controllers
         [HttpPut("{Id}")]
         public IActionResult UpdateChachier(int Id, ChachierDto chachierDto)
         {
-            var chachier = _dbContext.Chashiers.Find(Id);
+            var chachier = _dbContext.Chachiers.Find(Id);
             if (chachier is null)
             {
                 return NotFound();
@@ -77,14 +77,18 @@ namespace MyFirstApp.Server.Controllers
         [HttpDelete("{Id}")]
         public IActionResult DeleteChachier(int Id)
         {
-            var chachier = _dbContext.Chashiers.Find(Id);
+            var chachier = _dbContext.Chachiers.Find(Id);
             if (chachier is null)
             {
                 return NotFound();
             }
-            _dbContext.Chashiers.Remove(chachier);
+            _dbContext.Chachiers.Remove(chachier);
             _dbContext.SaveChanges();
             return Ok();
         }
+
+        internal class ChachierController
+        {
+        }
     }
-}
+    }

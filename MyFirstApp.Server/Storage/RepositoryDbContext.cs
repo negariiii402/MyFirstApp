@@ -11,7 +11,7 @@ public class RepositoryDbContext : DbContext
     }
     public DbSet<Book> Books{get; set;}
     public DbSet<Customer> Customers{get; set;}
-    public DbSet<Chashier> Chashiers{get; set;}
+    public DbSet<Chachier> Chachiers{get; set;}
     public DbSet<FactorItem> FactorItems{get; set;}
     public DbSet<Factor> Factories{get; set;}
 
